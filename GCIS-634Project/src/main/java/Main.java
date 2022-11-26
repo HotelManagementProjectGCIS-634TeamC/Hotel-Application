@@ -29,26 +29,47 @@ class Food implements Serializable {
         return price;
     }
 }
-class Singleroom implements Serializable
-{
+class Singleroom implements Serializable {
     String name;
     String contact;
     String gender;
-    ArrayList<Food> food =new ArrayList<>();
+    private ArrayList<Food> food = new ArrayList<>();
 
-
-    Singleroom()
-    {
-        this.name="";
+    Singleroom() {
+        this.setName("");
     }
-    Singleroom(String name,String contact,String gender)
-    {
-        this.name=name;
-        this.contact=contact;
-        this.gender=gender;
+
+    Singleroom(String name, String contact, String gender) {
+        this.setName(name);
+        this.setContact(contact);
+        this.gender = gender;
+    }
+
+    public ArrayList<Food> getFood() {
+        return food;
+    }
+
+    public void setFood(ArrayList<Food> food) {
+        this.food = food;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getContact() {
+        return contact;
+    }
+
+    public void setContact(String contact) {
+        this.contact = contact;
     }
 }
-class Doubleroom extends Singleroom implements Serializable
+class Doubleroom extends Singleroom
 {
     String name2;
     String contact2;
