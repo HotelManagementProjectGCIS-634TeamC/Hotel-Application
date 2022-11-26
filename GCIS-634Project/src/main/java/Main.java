@@ -7,49 +7,69 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-class Food implements Serializable
-{
+class Food implements Serializable {
     int itemno;
     int quantity;
-    float price;
+    double price;
 
-    Food(int itemno,int quantity)
-    {
-        this.itemno=itemno;
-        this.quantity=quantity;
-        switch(itemno)
-        {
-            case 1:price=quantity*50;
-                break;
-            case 2:price=quantity*60;
-                break;
-            case 3:price=quantity*70;
-                break;
-            case 4:price=quantity*30;
-                break;
-        }
+    Food(int itemno, int quantity) {
+        this.itemno = itemno;
+        this.quantity = quantity;
+        price = switch (itemno) {
+            case 1 -> calculated_price(50, quantity);
+            case 2 -> calculated_price(60, quantity);
+            case 3 -> calculated_price(70, quantity);
+            case 4 -> calculated_price(30, quantity);
+            default -> calculated_price(10, quantity);
+        };
+    }
+
+    private double calculated_price(int markup, int quantity) {
+        price = markup * quantity;
+        return price;
     }
 }
-class Singleroom implements Serializable
-{
+class Singleroom implements Serializable {
     String name;
     String contact;
     String gender;
-    ArrayList<Food> food =new ArrayList<>();
+    private ArrayList<Food> food = new ArrayList<>();
 
-
-    Singleroom()
-    {
-        this.name="";
+    Singleroom() {
+        this.setName("");
     }
-    Singleroom(String name,String contact,String gender)
-    {
-        this.name=name;
-        this.contact=contact;
-        this.gender=gender;
+
+    Singleroom(String name, String contact, String gender) {
+        this.setName(name);
+        this.setContact(contact);
+        this.gender = gender;
+    }
+
+    public ArrayList<Food> getFood() {
+        return food;
+    }
+
+    public void setFood(ArrayList<Food> food) {
+        this.food = food;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getContact() {
+        return contact;
+    }
+
+    public void setContact(String contact) {
+        this.contact = contact;
     }
 }
-class Doubleroom extends Singleroom implements Serializable
+class Doubleroom extends Singleroom
 {
     String name2;
     String contact2;
