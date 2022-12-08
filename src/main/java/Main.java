@@ -304,6 +304,7 @@ class Hotel
         System.out.println("Number of rooms available : "+count);
     }
 
+    // Combined billing of room cost and food cost together.
     static void bill(int rn,int rtype)
     {
         double amount=0;
