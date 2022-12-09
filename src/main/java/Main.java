@@ -6,29 +6,24 @@ import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Scanner;
-
+//food clss
 class Food implements Serializable
 {
     int itemno;
     int quantity;
     float price;
 
-    Food(int itemno,int quantity)
-    {
-        this.itemno=itemno;
-        this.quantity=quantity;
-        switch(itemno)
-        {
-            case 1:price=quantity*50;
-                break;
-            case 2:price=quantity*60;
-                break;
-            case 3:price=quantity*70;
-                break;
-            case 4:price=quantity*30;
-                break;
-        }
-    }
+       Food(int itemno, int quantity) {
+        this.itemno = itemno;
+        this.quantity = quantity;
+        price = switch (itemno) {
+            case 1 -> calculated_price(50, quantity);
+            case 2 -> calculated_price(60, quantity);
+            case 3 -> calculated_price(70, quantity);
+            case 4 -> calculated_price(30, quantity);
+            default -> calculated_price(10, quantity);
+        };
+
 }
 class Singleroom implements Serializable {
     String name;
